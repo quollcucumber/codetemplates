@@ -26,6 +26,10 @@ int moveup(int node, int dist);
 int query(int left, int right) ;
 void update(int index, int val) ;
 
+//add big numbers
+string sum(string a, string b);
+
+
 signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -201,3 +205,27 @@ void update(int index, int val) {
 
 //graph stuff
 
+
+
+
+//add big numbers
+string sum(string a, string b) {
+    string ans;
+    reverse(a.begin(),a.end());
+    reverse(b.begin(), b.end());
+    int carry = 0;
+    for(int i = 0; i < max(a.size(), b.size()); i++) {
+        int total = carry;
+        if(i < a.size()) {
+            total += a[i] - '0';
+        }
+        if(i < b.size()) {
+            total += b[i] - '0';
+        }
+        ans += total % 10 + '0';
+        carry = total / 10;
+    }
+    if(carry == 1) ans += '1';
+    reverse(ans.begin(), ans.end());
+    return ans;
+}
