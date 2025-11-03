@@ -28,7 +28,7 @@ void update(int index, int val) ;
 
 //add big numbers
 string sum(string a, string b);
-
+string times(string a, string b);
 
 signed main() {
     ios_base::sync_with_stdio(false);
@@ -228,4 +228,19 @@ string sum(string a, string b) {
     if(carry == 1) ans += '1';
     reverse(ans.begin(), ans.end());
     return ans;
+}
+
+
+string times(string a, string b) {
+    string total;
+    for(int i = 0; i < a.size(); i++) {
+        string s = b;
+        for(int j = 0; j < a.size() - i - 1; j++) {
+            s += '0';
+        }
+        for(int j = 0; j < a[i] - '0'; j++) {
+            total = sum(total, s);
+        }
+    }
+    return total;
 }
